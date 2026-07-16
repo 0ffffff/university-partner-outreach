@@ -21,6 +21,23 @@ Riley,Chen,"Director of Product Management, Integration Network",Acme Corp,riley
 Casey,Nguyen,"Director, University Talent Acquisition",Acme Corp,casey.nguyen@acme.com
 ```
 
+## Org profile → role targeting
+
+Same company, different university orgs → different cold lists.
+
+| University org (fictional) | Profile input | Primary roles at Acme |
+|----------------------------|---------------|------------------------|
+| Bits & Bytes SWE Club | “Undergrad SWE club; workshops + mentorship” | TPM, Eng Manager/Director, DevRel, university recruiting (tech) |
+| Crest Strategy Group | Link to consulting club site; case competitions | Strategy & ops, BD, PMM, marketing managers, university recruiting (non-tech) |
+| Pixel Product Society | Chat: “PM club, product teardown nights” | PM, PMM, product ops, early careers (PM) |
+| Harbor FinTech Forum | File: club one-pager, finance + markets focus | Corp dev / finance campus sponsors, university recruiting (finance), relevant PMs |
+
+**Flow**
+
+1. User: “Research Acme for 100+ outreach contacts.”
+2. Agent: asks for org profile (link, file, or description) — does not invent one.
+3. Agent: states niche + role plan, then researches.
+
 ## Profile archetypes
 
 ### A — Keep: high leverage + plausible reply
@@ -31,6 +48,8 @@ Casey,Nguyen,"Director, University Talent Acquisition",Acme Corp,casey.nguyen@ac
 | Director, University Recruiting | Direct owner of campus/university motion |
 | Manager, Partner Solutions Engineering | Technical + partner facing; often replies; can intro commercial owners |
 | Sr. Director, Partner Success / PS | Operates post-sale partner motions; good for structured programs |
+| Engineering Manager (SWE club ask) | Niche fit for technical orgs; speaker/mentor/hiring owner even without “partner” in title |
+| Product Marketing Manager (consulting club ask) | Niche fit for strategy/business orgs; often owns narratives and campus-facing content |
 
 **Validation sketch**
 
@@ -47,13 +66,14 @@ Casey,Nguyen,"Director, University Talent Acquisition",Acme Corp,casey.nguyen@ac
 | Global Alliance Director, GSIs | Often second wave | First wave if no managers below |
 | SVP | Exclude from cold list | Rare title; treat like C-suite at small cos — include if hands-on |
 
-### C — Remove for wrong lane (any size)
+### C — Remove for wrong lane (depends on org niche)
 
 | Profile | Why |
 |---------|-----|
-| Corporate Controller / Tax Director | Cannot initiate university or partner programs |
-| Engineering Manager, internal platform | Leverage on delivery, not on external partnership intake |
-| Brand Designer / internal Comms | No contract or program authority |
+| Corporate Controller / Tax Director | Cannot initiate university or partner programs (unless finance-club campus sponsor — rare) |
+| Engineering Manager, internal platform | Wrong for consulting/marketing orgs; **keep** for SWE/technical clubs when they can speak, mentor, or hire |
+| Brand Designer / internal Comms | Wrong for hard-tech clubs; **keep** for design/marketing orgs |
+| Quota AE with no program remit | Sales pressure without partnership/campus ownership |
 
 ## Email validation examples
 
@@ -90,27 +110,33 @@ Casey,Nguyen,"Director, University Talent Acquisition",Acme Corp,casey.nguyen@ac
 
 ### Failed validation (do not ship)
 
+- Started people research without an org profile, then shipped a generic partner list for a technical club (or eng managers for a consulting club).
 - Defaulted to `first.last` (or `flast` / `first_last`) before collecting company-specific examples.
 - Built 200 rows as `flast@company.com` because one intern’s GitHub used that — meanwhile leadership pages show `first.last@`.
 - Used a legacy acquired-brand domain without checking whether employees now use the parent domain.
 - Kept an old speaker-bio email after public profiles show the person left for a competitor.
 - Stopped at 60 rows when the user asked for 100+, instead of another source pass.
+- Padded to count with off-niche titles instead of another niche source pass.
 
 ## End-to-end mini run (what “done” looks like)
 
 1. User: “100+ people at {Company} who could partner with our university org.”
-2. Agent confirms domain; gathers real addresses until a pattern locks (no scheme assumed). Per [email-accuracy.md](email-accuracy.md).
-3. Agent pulls **USA-based** partners + university + SE/CS from [sources.md](sources.md); verifies employment + location.
-4. Agent infers size band; applies seniority ceiling (e.g. keep startup CEO; drop hyperscale SVP). Drops finance / pure internal eng / non-US territory roles; keeps US motion owners.
-5. If under 100 US keepers → another **USA** pass (roles, blog authors, speakers). Repeat until US pool is exhausted.
-6. Only if still short → Phase B non-US; sort US first.
-7. Agent writes `{company}-leverage-outreach.csv` once count is met.
-8. Agent reports: N vs target, US vs non-US, size band + seniority ceiling, pattern + confidence (or verified-only), role mix, residual risk.
+2. Agent asks for university org profile (link, file, or description) if missing. User: “We’re a strategy consulting club — case comps and alumni mentorship.”
+3. Agent states role plan (e.g. strategy/ops, BD, PMM, marketing managers, university recruiting) and confirms domain.
+4. Agent gathers real addresses until a pattern locks (no scheme assumed). Per [email-accuracy.md](email-accuracy.md).
+5. Agent pulls **USA-based** niche roles + campus/partner owners from [sources.md](sources.md); verifies employment + location + niche fit.
+6. Agent infers size band; applies seniority ceiling (e.g. keep startup CEO; drop hyperscale SVP). Drops off-niche titles (e.g. IC eng for a consulting club) and non-US territory roles.
+7. If under 100 US keepers → another **USA** pass on the niche plan first, then shared partner/university lanes. Repeat until US pool is exhausted.
+8. Only if still short → Phase B non-US; sort US first.
+9. Agent writes `{company}-leverage-outreach.csv` once count is met.
+10. Agent reports: org niche + role plan, N vs target, US vs non-US, size band + seniority ceiling, pattern + confidence (or verified-only), role mix vs plan, residual risk.
 
 ## Optional user knobs
 
 Honor if present:
 
+- University org profile (link, file, or description) — **required** before research if not already known
+- Explicit role list or “technical only” / “non-technical only”
 - Sample CSV path (schema/style)
 - Minimum row count
 - Force-include or force-exclude C-suite / SVP (overrides size heuristic)

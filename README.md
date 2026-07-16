@@ -6,12 +6,13 @@ Works with Cursor, Claude Code, Codex, and other tools that load `SKILL.md` skil
 
 ## What it does
 
-1. Clarifies the outreach motion (campus/talent, partnerships, commercial intro).
-2. Infers **company size** so cold seniority is appropriate (startup C-suite can be fine; hyperscale SVPs are not).
-3. Defaults to **USA-based** contacts; opens other countries only if the US pool is exhausted.
-4. Discovers the company’s email pattern from **evidence only** — never assumes `first.last`, `flast`, `first_last`, etc.
-5. Keeps researching until the user’s **row count** is met with accurate records (no padding, no guessed inboxes).
-6. Writes: `First Name, Last Name, Title, Company Name, Email`.
+1. Asks for the **university org profile** (website, file, or description) if unknown, then targets technical / non-technical / field-specific roles to that niche.
+2. Clarifies the outreach motion (campus/talent, partnerships, commercial intro, speakers).
+3. Infers **company size** so cold seniority is appropriate (startup C-suite can be fine; hyperscale SVPs are not).
+4. Defaults to **USA-based** contacts; opens other countries only if the US pool is exhausted.
+5. Discovers the company’s email pattern from **evidence only** — never assumes `first.last`, `flast`, `first_last`, etc.
+6. Keeps researching until the user’s **row count** is met with accurate records (no padding, no guessed inboxes).
+7. Writes: `First Name, Last Name, Title, Company Name, Email`.
 
 ## Install
 
@@ -67,6 +68,8 @@ Restart or start a new agent chat if the skill does not appear immediately.
 Ask the agent something like:
 
 > Research Acme for 100+ USA-based people who could partner with our university org. Write a CSV with First Name, Last Name, Title, Company Name, Email.
+
+If you have not described the org yet, the agent should ask for a website, file, or short description first (e.g. SWE club vs strategy consulting), then chase matching roles (TPMs/eng directors vs marketing/PMs, etc.).
 
 Point at a sample CSV if you have a preferred shape. The agent should follow `SKILL.md` and the linked reference files.
 
