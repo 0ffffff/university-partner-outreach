@@ -1,6 +1,8 @@
-# University partner outreach (Cursor skill)
+# University partner outreach
 
-A Cursor Agent skill for researching a company, finding people with real leverage who may partner with a university organization, validating employment and email patterns, and writing a CSV.
+An [Agent Skills](https://agentskills.io/) package for researching a company, finding people with real leverage who may partner with a university organization, validating employment and email patterns, and writing a CSV.
+
+Works with Cursor, Claude Code, Codex, and other tools that load `SKILL.md` skills.
 
 ## What it does
 
@@ -13,23 +15,52 @@ A Cursor Agent skill for researching a company, finding people with real leverag
 
 ## Install
 
-### Option A — use this repo as the project
+### Option A — paste this into any coding agent
 
-Open this folder in Cursor. The skill lives at:
+Copy the block below into Claude Code, Codex, Cursor, or similar. Tell it where you want the skill (personal vs this project) if you care; otherwise it picks a sensible default for the tool it’s running in.
 
 ```text
-.cursor/skills/university-partner-outreach/
+Install the university-partner-outreach agent skill from
+https://github.com/0ffffff/university-partner-outreach
+
+1. Clone or sparse-checkout that repo (or download the skills/university-partner-outreach folder).
+2. Detect which tool you are (Claude Code, Cursor, Codex, Copilot, OpenCode, or other).
+3. Copy skills/university-partner-outreach/ (SKILL.md plus email-accuracy.md, sources.md, examples.md) into the correct skills directory for this tool:
+   - Claude Code personal: ~/.claude/skills/university-partner-outreach/
+   - Claude Code project:  .claude/skills/university-partner-outreach/
+   - Cursor personal:      ~/.cursor/skills/university-partner-outreach/
+   - Cursor project:       .cursor/skills/university-partner-outreach/ (also accepts .agents/skills/)
+   - Codex user:           ~/.agents/skills/university-partner-outreach/ (or ~/.codex/skills/)
+   - Codex repo:           .agents/skills/university-partner-outreach/
+   - Copilot personal:     ~/.copilot/skills/university-partner-outreach/
+   - Copilot project:      .github/skills/university-partner-outreach/
+   - OpenCode:             ~/.agents/skills/ or .agents/skills/ (also ~/.config/opencode/skills/)
+   Prefer personal install unless I say this is for one repo only.
+4. Confirm the install path exists and contains SKILL.md. Tell me the path and how to invoke the skill.
+5. Do not modify the skill contents unless I ask.
 ```
 
-Project skills load from that path automatically.
+More detail (manual paths, repo layout): [INSTALL.md](INSTALL.md).
 
-### Option B — install as a personal skill
+### Option B — use this repo as the project
+
+Clone and open this folder in your coding agent. Canonical skill files live at:
+
+```text
+skills/university-partner-outreach/
+```
+
+This repo also exposes the same folder via symlinks under `.agents/skills/`, `.claude/skills/`, and `.cursor/skills/` so Cursor, Claude Code, and Codex can auto-discover it.
+
+### Option C — copy by hand
 
 ```bash
-cp -R .cursor/skills/university-partner-outreach ~/.cursor/skills/university-partner-outreach
+git clone https://github.com/0ffffff/university-partner-outreach.git
+# pick one destination for your tool, e.g. Claude Code personal:
+cp -R university-partner-outreach/skills/university-partner-outreach ~/.claude/skills/university-partner-outreach
 ```
 
-Restart or start a new agent chat so the skill is picked up.
+Restart or start a new agent chat if the skill does not appear immediately.
 
 ## Usage
 
@@ -42,11 +73,14 @@ Point at a sample CSV if you have a preferred shape. The agent should follow `SK
 ## Layout
 
 ```text
-.cursor/skills/university-partner-outreach/
+skills/university-partner-outreach/
   SKILL.md              # Main workflow
   sources.md            # Where to look; trust tiers
   email-accuracy.md     # Pattern discovery + validation gates
   examples.md           # Fictional shape / archetype examples
+.agents/skills/…        # Symlink → skills/… (Codex / portable)
+.claude/skills/…        # Symlink → skills/… (Claude Code)
+.cursor/skills/…        # Symlink → skills/… (Cursor)
 examples/
   sample-outreach-schema.csv
 scripts/
