@@ -1,0 +1,10 @@
+.DS_Store
+*.pyc
+__pycache__/
+.venv/
+venv/
+
+# Generated outreach lists often contain personal data — keep them out by default
+*-leverage-outreach.csv
+*-outreach.csv
+!examples/sample-outreach-schema.csv
