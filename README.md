@@ -26,7 +26,7 @@ https://github.com/0ffffff/university-partner-outreach
 
 1. Clone or sparse-checkout that repo (or download the skills/university-partner-outreach folder).
 2. Detect which tool you are (Claude Code, Cursor, Codex, Copilot, OpenCode, or other).
-3. Copy skills/university-partner-outreach/ (SKILL.md plus niche-roles.md, email-accuracy.md, sources.md, examples.md) into the correct skills directory for this tool:
+3. Copy skills/university-partner-outreach/ (SKILL.md plus references/ and scripts/) into the correct skills directory for this tool:
    - Claude Code personal: ~/.claude/skills/university-partner-outreach/
    - Claude Code project:  .claude/skills/university-partner-outreach/
    - Cursor personal:      ~/.cursor/skills/university-partner-outreach/
@@ -53,7 +53,7 @@ skills/university-partner-outreach/
 
 This repo also exposes the same folder via symlinks under `.agents/skills/`, `.claude/skills/`, and `.cursor/skills/` so Cursor, Claude Code, and Codex can auto-discover it.
 
-### Option C — copy by hand
+### Option C — manual copy
 
 ```bash
 git clone https://github.com/0ffffff/university-partner-outreach.git
@@ -77,18 +77,21 @@ Point at a sample CSV if you have a preferred shape. The agent should follow `SK
 
 ```text
 skills/university-partner-outreach/
-  SKILL.md              # Main workflow (+ token hygiene)
-  niche-roles.md        # Org niche → titles (load matching rows only)
-  sources.md            # Where to look; trust tiers
-  email-accuracy.md     # Pattern discovery + validation gates
-  examples.md           # Fictional shape / archetype examples
-.agents/skills/…        # Symlink → skills/… (Codex / portable)
-.claude/skills/…        # Symlink → skills/… (Claude Code)
-.cursor/skills/…        # Symlink → skills/… (Cursor)
+  SKILL.md                 # Main workflow (+ token hygiene)
+  references/
+    niche-roles.md         # Org niche → titles (load matching rows only)
+    sources.md             # Where to look; trust tiers
+    email-accuracy.md      # Pattern discovery + validation gates
+    examples.md            # Fictional shape / archetype examples
+  scripts/
+    track.py               # Run signal (stdlib)
+.agents/skills/…           # Symlink → skills/… (Codex / portable)
+.claude/skills/…           # Symlink → skills/… (Claude Code)
+.cursor/skills/…           # Symlink → skills/… (Cursor)
 examples/
   sample-outreach-schema.csv
 scripts/
-  validate_outreach_csv.py
+  validate_outreach_csv.py # Repo-level CSV validator (not the skill script)
 ```
 
 ## Validate a CSV

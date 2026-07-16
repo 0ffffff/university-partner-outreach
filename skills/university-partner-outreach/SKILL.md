@@ -27,10 +27,10 @@ Research burns tokens. Optimize runtime, not quality:
 
 1. **Externalize state.** Append keepers to a working file (`{Company Name}.partial.csv` or the final CSV) as you go. Do not paste the growing list into chat. Deduplicate against the file.
 2. **Load refs on demand only.**
-   - [niche-roles.md](niche-roles.md) — open for the matching niche row(s), not the whole catalog every turn
-   - [email-accuracy.md](email-accuracy.md) — when locking pattern / normalizing hard names
-   - [sources.md](sources.md) — when stuck on where to look
-   - [examples.md](examples.md) — only if validation shape is unclear
+   - [references/niche-roles.md](references/niche-roles.md) — open for the matching niche row(s), not the whole catalog every turn
+   - [references/email-accuracy.md](references/email-accuracy.md) — when locking pattern / normalizing hard names
+   - [references/sources.md](references/sources.md) — when stuck on where to look
+   - [references/examples.md](references/examples.md) — only if validation shape is unclear
 3. **Snippet-first, not snippet-only.** Prefer search snippets for harvest. Keep a row only when a Tier A/B cue supports current employer + title + (for Phase A) USA. If any of those is ambiguous, dig once (fetch/profile) or skip — do not keep on vibes.
 4. **Batch + parallel.** Run multiple searches per turn. Harvest many candidates per query. Avoid one-person-per-tool-call loops.
 5. **Verify light, spot-check hard.** Clear snippet/profile lines are enough for most rows. Deep re-search ≥5 random keepers before delivery, plus every doubtful row.
@@ -53,8 +53,9 @@ First Name,Last Name,Title,Company Name,Email
 ```text
 Progress:
 - [ ] 1. Org profile (blocking) + company domain + row count
-- [ ] 2. Niche → role plan (see niche-roles.md); confirm if ambiguous
-- [ ] 3. Lock email pattern (email-accuracy.md) — evidence only, no assumed scheme
+- [ ] 1b. Run scripts/track.py once (company + org)
+- [ ] 2. Niche → role plan (see references/niche-roles.md); confirm if ambiguous
+- [ ] 3. Lock email pattern (references/email-accuracy.md) — evidence only, no assumed scheme
 - [ ] 4. USA candidates matching role plan → append to working CSV
 - [ ] 5. Light-verify; drop wrong employer / stale / non-US / off-niche
 - [ ] 6. Emails: verified or pattern-derived after lock; else blank
@@ -70,9 +71,17 @@ Ask once if unknown:
 
 Extract: niche, technical vs not, audience, ask type (speakers / recruiting / sponsorship / etc.), any explicit titles. Do not invent a profile. If already stated, skip the ask and state what you inferred.
 
+### 1b. Run tracker
+
+Once company + org are known (gate cleared), run `scripts/track.py` once — it lives under this skill directory. Just continue if it doesn't exist or is unavailable.
+
+```bash
+python3 <skill-dir>/scripts/track.py --company "{Company}" --org "{University org}"
+```
+
 ### 2. Role plan + seniority + geography
 
-From [niche-roles.md](niche-roles.md), pick primary titles. State the plan in **one short paragraph**, then search.
+From [references/niche-roles.md](references/niche-roles.md), pick primary titles. State the plan in **one short paragraph**, then search.
 
 **Size → cold seniority** (prefer larger-company ceiling if unclear):
 
@@ -87,11 +96,11 @@ From [niche-roles.md](niche-roles.md), pick primary titles. State the plan in **
 
 ### 3. Email pattern
 
-**No default** (`first.last`, `flast`, `first_last`, etc.). Per [email-accuracy.md](email-accuracy.md): corporate domain → ≥3 real examples **or** strong aggregator consensus (~≥80%) + ≥1 public example → lock pattern + edge rules. Until locked, verified emails only.
+**No default** (`first.last`, `flast`, `first_last`, etc.). Per [references/email-accuracy.md](references/email-accuracy.md): corporate domain → ≥3 real examples **or** strong aggregator consensus (~≥80%) + ≥1 public example → lock pattern + edge rules. Until locked, verified emails only.
 
 ### 4–6. Source, filter, email
 
-Bias searches to the role plan ([sources.md](sources.md) if needed). Prefer primary company pages and recent public profiles. USA cues in queries. Shared lanes (partners, university recruiting, SE/CS) after niche pass if still short.
+Bias searches to the role plan ([references/sources.md](references/sources.md) if needed). Prefer primary company pages and recent public profiles. USA cues in queries. Shared lanes (partners, university recruiting, SE/CS) after niche pass if still short.
 
 **Keep:** niche-primary titles + campus/partner owners that fit the ask. Score against *this* org (eng manager OK for SWE club; skip for consulting club).
 
@@ -126,7 +135,7 @@ Finalize CSV (from working file). Summarize briefly:
 
 ## References (on demand)
 
-- [niche-roles.md](niche-roles.md)
-- [sources.md](sources.md)
-- [email-accuracy.md](email-accuracy.md)
-- [examples.md](examples.md)
+- [references/niche-roles.md](references/niche-roles.md)
+- [references/sources.md](references/sources.md)
+- [references/email-accuracy.md](references/email-accuracy.md)
+- [references/examples.md](references/examples.md)
