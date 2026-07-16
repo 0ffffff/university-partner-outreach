@@ -1,5 +1,7 @@
 # Email accuracy
 
+Open when locking a company pattern or normalizing hard names. Lock once, then generate — do not re-run discovery per row.
+
 Bad addresses waste the list and burn sender reputation. There is **no overall default** email scheme — not `first.last`, not `flast` / first-initial+lastname, not `firstlast`, not `first_last`, not `last.first`, not anything else — until evidence for *this company* locks one.
 
 **Pattern discovery and name normalization are mandatory** before any bulk generation. Prefer a blank Email cell over a fabricated mailbox. Hitting the user’s row count means finding more real people (and real/locked-pattern addresses), not guessing inboxes.

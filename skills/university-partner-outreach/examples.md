@@ -1,6 +1,6 @@
 # Examples
 
-Illustrative only. Names, companies, and addresses below are **fictional** placeholders for shape and validation logic—not real contacts.
+Load only if CSV shape, niche targeting, or validation edge cases are unclear. Illustrative only — names and addresses are **fictional**.
 
 ## Good CSV row shape
 
@@ -128,7 +128,7 @@ Same company, different university orgs → different cold lists.
 6. Agent infers size band; applies seniority ceiling (e.g. keep startup CEO; drop hyperscale SVP). Drops off-niche titles (e.g. IC eng for a consulting club) and non-US territory roles.
 7. If under 100 US keepers → another **USA** pass on the niche plan first, then shared partner/university lanes. Repeat until US pool is exhausted.
 8. Only if still short → Phase B non-US; sort US first.
-9. Agent writes `{company}-leverage-outreach.csv` once count is met.
+9. Agent writes `{Company Name}.csv` (for example, `Stripe.csv`) once count is met.
 10. Agent reports: org niche + role plan, N vs target, US vs non-US, size band + seniority ceiling, pattern + confidence (or verified-only), role mix vs plan, residual risk.
 
 ## Optional user knobs

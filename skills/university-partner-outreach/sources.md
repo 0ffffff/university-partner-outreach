@@ -1,5 +1,7 @@
 # Sources for verified people
 
+Open when you need trust tiers or search recipes. Prefer **snippet-first** harvests; fetch full pages only to confirm employer, title, location, or email examples.
+
 Use multiple tiers. Promote a person to the CSV only when a **Tier A or B** source supports current employment (or two weaker sources agree).
 
 ## Tier A — primary / high trust
@@ -63,33 +65,16 @@ Add recent-year filters when noise is high. Phase B (only if US exhausted): drop
 
 For email pattern discovery specifically, see [email-accuracy.md](email-accuracy.md).
 
-## Role keywords that correlate with leverage for university partnerships
+## Role keywords
 
-**First wave / high reply odds**
+For niche-primary titles, use [niche-roles.md](niche-roles.md). Shared high-yield lanes:
 
-- Partner Territory / Regional Alliance Manager
-- Partner Alliance Manager (GSI / ISV / strategic)
-- University Recruiting / Campus / Early Careers Manager or Director
-- Academic Alliances / Education partnerships
-- Partner Sales Manager / Director
-- Manager, Partner Solutions Engineering
-- Director, Customer Success (Enterprise) — for expansion intros
-- DevRel / Developer Education lead
+- Partner / Alliance / Channel / GSI managers → directors
+- University Recruiting / Campus / Early Careers / Academic Alliances
+- Partner Sales, Partner SE, enterprise CS (commercial/sponsorship asks)
+- DevRel / Developer Education (technical orgs)
 
-**Second wave / routing power** (first wave at startups if no mid-level owners)
-
-- Director / Senior Director, Global Partnerships or Alliances
-- VP, Partners / Channels / Cloud Alliances
-- Head of Technology Partnerships
-- Director, Partner Marketing (program amplification)
-- Product Manager / Director owning integration network or partner APIs
-- Founders / C-suite / VPs at **small** companies who still own external partnerships
-
-**Skip for cold asks — depends on size**
-
-- **Hyperscale / large enterprise:** CEO, COO, CRO, SVP, generic VP — warm intro only (e.g. do not cold-email a hyperscale SVP)
-- **Startup / small:** those same titles can be primary targets if they own the motion
-- **Any size (wrong lane):** pure accounting, tax, internal audit, treasury; infra/SRE with no external surface; brand/comms unless CSR/university remit is explicit
+Size-dependent skips: hyperscale SVP/VP/C-suite cold → no; startup founder/C-suite who owns the motion → yes. Wrong lane always: pure tax/audit/treasury; titles off-niche with no campus/partner remit.
 
 ## Currency + location checks
 

@@ -18,7 +18,7 @@ https://github.com/0ffffff/university-partner-outreach
 
 1. Clone or sparse-checkout that repo (or download the skills/university-partner-outreach folder).
 2. Detect which tool you are (Claude Code, Cursor, Codex, Copilot, OpenCode, or other).
-3. Copy skills/university-partner-outreach/ (SKILL.md plus email-accuracy.md, sources.md, examples.md) into the correct skills directory for this tool:
+3. Copy skills/university-partner-outreach/ (SKILL.md plus niche-roles.md, email-accuracy.md, sources.md, examples.md) into the correct skills directory for this tool:
    - Claude Code personal: ~/.claude/skills/university-partner-outreach/
    - Claude Code project:  .claude/skills/university-partner-outreach/
    - Cursor personal:      ~/.cursor/skills/university-partner-outreach/
